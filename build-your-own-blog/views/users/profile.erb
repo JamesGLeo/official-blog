@@ -1,36 +1,42 @@
-<h2><%= current_user.username %>'s Thoughts</h2>
+<div class="blog-header">
+    <h2 class="blog-title">Your thoughts, <%= current_user.username %>?</h2>
+</div>
+
 
 <form action="/pages" method="post">
-  <input type="text" name="page[header]" placeholder="Title">
-  <textarea name="page[article]">Your thoughts.</textarea>
+  <input type="text" name="page[header]" placeholder="Title"></br>
+  <textarea name="page[article]" placeholder="Your thoughts."></textarea>
   <input type="submit" value="Post.">
 </form>
 
-<% current_user.pages.each do |page| %>
 
-  <div class="page">
-    
-    <span>
+<div class="row">
+    <% current_user.pages.each do |page| %>
+
       <div class="page">
-        <h3><%= page.header %></h3>
-        <p><%= page.article %></p>
-        <h6>Posted at: <%= page.created_at.strftime("%b. %d, %Y, (%H:%M)")%></h6>
+
+        <span>
+          <div class="blog-post">
+            <h3 class="blog-post-title"><%= page.header %></h3>
+            <p class="blog-post-meta"><%= page.article %></p>
+            <h6>Posted at: <%= page.created_at.strftime("%b. %d, %Y, (%H:%M)")%></h6>
+          </div>
+        </span>
+
+        <span>
+
+          <form action="/pages/<%= page.id %>/edit" method="get">
+            <input type="submit" value="Edit Post">
+          </form>
+
+          <form action="/pages/<%= page.id %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete">
+          </form>
+    <!-- INCLUDE TAGS HERE -->
+        </span>
+
       </div>
-    </span>
-    
-    <span>
 
-      <form action="/pages/<%= page.id %>/edit" method="get">
-        <input type="submit" value="Edit Post">
-      </form>
-
-      <form action="/pages/<%= page.id %>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete">
-      </form>
-<!-- INCLUDE TAGS HERE -->
-    </span>
-
-  </div>
-
-<% end %>
+    <% end %>
+</div>

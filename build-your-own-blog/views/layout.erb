@@ -2,21 +2,46 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>James' Blog App</title>
-  <link rel="stylesheet" href="/stylesheets/styles.css">
+
+<head>
+    <meta charset="UTF-8">
+    <title>James' Blog App</title>
+    <link rel="stylesheet" href="/stylesheets/css/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/styles.css" >
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
   <script src="/javascripts/jquery.js"></script>
   <script src="/javascripts/scripts.js"></script>
+  <style type="text/css"></style>
+
 </head>
 
 <body>
-  <% if current_user %>
-    <%= erb :'partials/_user_nav'%>
-  <% else %>
-    <%= erb :'partials/_non_user_nav'%>
-  <% end%>
-  
-  <%= yield %>
+    <div class="container">
+
+        <% if current_user %>
+          <%= erb :'partials/_user_nav'%>
+        <% else %>
+          <%= erb :'partials/_non_user_nav'%>
+        <% end%>
+
+        <div class="blog-header">
+          <h1 class="blog-title">Thoughts</h1>
+          <p class="lead blog-description">The life and times of...</p>
+        </div>
+
+    <%= yield %>
+    </div>
+
+    <script src="/javascripts/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </body>
 
 </html>

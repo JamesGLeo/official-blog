@@ -1,16 +1,18 @@
-<div>
-  
-  <form action="/" method="get">
-    <input type="submit" value="Home">
-  </form>
+<div class="blog-masthead">
+  <div class="container">
+    <nav class="blog-nav">
+      <form action="/" method="get">
+         <input type="submit" value="Home">
+       </form>
 
-  <form action="/sessions" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Log Out">
-  </form>
+       <form action="/sessions" method="post">
+         <input type="hidden" name="_method" value="delete">
+         <input type="submit" value="Log Out">
+       </form>
 
-  <form action="/users/profile" method="get">
-    <input type="submit" value="View Profile">
-  </form>
-
+       <form action="/users/profile" method="get">
+         <input type="submit" value="View Profile">
+       </form>
+    </nav>
+  </div>
 </div>
