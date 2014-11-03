@@ -1,0 +1,11 @@
+<h1>Thoughts</h1>
+
+<h3>Recent Posts:</h3>
+
+<% @selected_pages.each do |page| %>
+  <div class="page">
+    <h3><%= page.header %></h3>
+    <p><%= page.article %></p>
+    <h6>Posted at: <%= page.created_at.strftime("%b. %d, %Y, (%H:%M)")%></h6>
+  </div>
+  <% end %>

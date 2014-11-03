@@ -1,0 +1,36 @@
+<h2><%= current_user.username %>'s Thoughts</h2>
+
+<form action="/pages" method="post">
+  <input type="text" name="page[header]" placeholder="Title">
+  <textarea name="page[article]">Your thoughts.</textarea>
+  <input type="submit" value="Post.">
+</form>
+
+<% current_user.pages.each do |page| %>
+
+  <div class="page">
+    
+    <span>
+      <div class="page">
+        <h3><%= page.header %></h3>
+        <p><%= page.article %></p>
+        <h6>Posted at: <%= page.created_at.strftime("%b. %d, %Y, (%H:%M)")%></h6>
+      </div>
+    </span>
+    
+    <span>
+
+      <form action="/pages/<%= page.id %>/edit" method="get">
+        <input type="submit" value="Edit Post">
+      </form>
+
+      <form action="/pages/<%= page.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+      </form>
+<!-- INCLUDE TAGS HERE -->
+    </span>
+
+  </div>
+
+<% end %>
